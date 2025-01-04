@@ -30,8 +30,8 @@ RUN conda install -y python=3.10 pip && conda clean -afy
 RUN pip install --no-cache-dir torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu124
 
 # comfyUI klonen und installieren
-RUN git clone https://github.com/comfyanonymous/ComfyUI.git /workspace/comfyui
-WORKDIR /workspace/comfyui
+RUN git clone https://github.com/comfyanonymous/ComfyUI.git /comfyui
+WORKDIR /comfyui
 
 # Installiere die Hauptabhängigkeiten
 RUN pip install --no-cache-dir -r requirements.txt
