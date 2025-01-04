@@ -14,13 +14,6 @@ RUN apt-get update -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# # Install nginx
-# RUN apt-get update && \
-#     apt-get install -y nginx
-
-# # Copy the 'default' configuration file to the appropriate location
-# COPY default /etc/nginx/sites-available/default
-
 ENV PATH="/usr/local/cuda/bin:${PATH}"
 
 # Install pytorch
@@ -40,9 +33,8 @@ RUN git clone https://github.com/comfyanonymous/ComfyUI.git && \
     git clone https://github.com/ltdrdata/ComfyUI-Manager.git && \
     git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git && \
     cd /ComfyUI && \
-    mkdir pysssss-workflows
+    
 
-COPY --chmod=644 workflows/ /ComfyUI/pysssss-workflows/
 COPY --chmod=644 comfy.settings.json /ComfyUI/user/default/comfy.settings.json
 
 WORKDIR /workspace
@@ -53,12 +45,6 @@ EXPOSE 8188
 RUN wget "https://github.com/comfyanonymous/ComfyUI_examples/blob/master/flux/flux_dev_example.png" -P /ComfyUI
 
 
-# This is a hacky way to change the default workflow on startup, but it works
-COPY --chmod=644 defaultGraph.json /defaultGraph.json
-COPY --chmod=755 replaceDefaultGraph.py /replaceDefaultGraph.py
-# Run the Python script
-RUN python3 /replaceDefaultGraph.py
-
 # Add Jupyter Notebook
 RUN pip3 install jupyterlab
 EXPOSE 8888
@@ -67,6 +53,9 @@ EXPOSE 8888
 
 # Add download scripts for additional models
 COPY --chmod=755 download_Files.sh /download_Files.sh
+COPY --chmod=755 download_flux1devfp8.sh /download_flux1devfp8.sh
+COPY --chmod=755 download_flux1schnellfp8.sh /download_flux1schnellfp8.sh
+COPY --chmod=755 styles.csv /styles.csv
 
 # KJNodes
 RUN cd /ComfyUI/custom_nodes && \

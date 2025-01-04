@@ -1,0 +1,1 @@
+wget -O "/workspace/ComfyUI/models/checkpoints/flux1-schnell-fp8.safetensors" "https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors?download=true" --progress=bar:force:noscroll
