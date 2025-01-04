@@ -1,0 +1,4 @@
+comfyui
+jupyterlab
+numpy
+pandas
