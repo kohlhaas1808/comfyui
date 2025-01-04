@@ -67,7 +67,6 @@ EXPOSE 8888
 
 # Add download scripts for additional models
 COPY --chmod=755 download_Files.sh /download_Files.sh
-COPY --chmod=755 disable_mixlab.sh /disable_mixlab.sh
 
 
 # KJNodes
