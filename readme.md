@@ -1,3 +1,6 @@
+# do not use this testing repo!
+
+
 # Dockerfile für ComfyUI mit Manager und JupyterLab
 
 Dieses Dockerfile erstellt ein Image, das ComfyUI (inklusive Manager) und JupyterLab mit CUDA-Unterstützung enthält.
