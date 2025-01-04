@@ -14,12 +14,12 @@ RUN apt-get update -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Install nginx
-RUN apt-get update && \
-    apt-get install -y nginx
+# # Install nginx
+# RUN apt-get update && \
+#     apt-get install -y nginx
 
-# Copy the 'default' configuration file to the appropriate location
-COPY default /etc/nginx/sites-available/default
+# # Copy the 'default' configuration file to the appropriate location
+# COPY default /etc/nginx/sites-available/default
 
 ENV PATH="/usr/local/cuda/bin:${PATH}"
 
