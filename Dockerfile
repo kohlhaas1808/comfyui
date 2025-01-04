@@ -68,7 +68,6 @@ EXPOSE 8888
 # Add download scripts for additional models
 COPY --chmod=755 download_Files.sh /download_Files.sh
 
-
 # KJNodes
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/kijai/ComfyUI-KJNodes.git && \
@@ -81,32 +80,11 @@ RUN cd /ComfyUI/custom_nodes && \
     cd rgthree-comfy && \
     pip3 install -r requirements.txt
 
-# JPS-Nodes
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/JPS-GER/ComfyUI_JPS-Nodes.git
 
 # comfy-plasma
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/Jordach/comfy-plasma.git
 
-# ComfyUI-Easy-Use
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/yolain/ComfyUI-Easy-Use.git && \
-    cd ComfyUI-Easy-Use && \
-    pip3 install -r requirements.txt
-
-# ComfyUI-Florence2
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/kijai/ComfyUI-Florence2.git && \
-    cd ComfyUI-Florence2 && \
-    pip3 install -r requirements.txt && \
-    mkdir /ComfyUI/models/LLM
-
-# was-node-suite-comfyui
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/WASasquatch/was-node-suite-comfyui.git && \
-    cd was-node-suite-comfyui && \
-    pip3 install -r requirements.txt
 
 # ComfyUI-Logic
 RUN cd /ComfyUI/custom_nodes && \
@@ -122,18 +100,6 @@ RUN cd /ComfyUI/custom_nodes && \
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/chrisgoringe/cg-image-picker.git
 
-# ComfyUI_LayerStyle
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/chflame163/ComfyUI_LayerStyle.git && \
-    cd ComfyUI_LayerStyle && \
-    pip3 install -r requirements.txt
-
-
-# comfyui-reactor-node
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/Gourieff/comfyui-reactor-node.git && \
-    cd comfyui-reactor-node && \
-    pip3 install -r requirements.txt
 
 # cg-use-everywhere
 RUN cd /ComfyUI/custom_nodes && \
