@@ -52,12 +52,6 @@ EXPOSE 8188
 # Download and move flux_dev_example.png
 RUN wget "https://github.com/comfyanonymous/ComfyUI_examples/blob/master/flux/flux_dev_example.png" -P /ComfyUI
 
-# Install Xlabs-AI/flux-RealismLora
-RUN apt-get install -y libgl1-mesa-glx libglib2.0-0
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/XLabs-AI/x-flux-comfyui.git && \
-    cd x-flux-comfyui && \
-    python3 setup.py
 
 # This is a hacky way to change the default workflow on startup, but it works
 COPY --chmod=644 defaultGraph.json /defaultGraph.json
