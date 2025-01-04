@@ -1,4 +1,0 @@
-comfyui
-jupyterlab
-numpy
-pandas
