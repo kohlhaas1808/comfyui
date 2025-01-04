@@ -1,30 +1,19 @@
-name: Docker Image CI
-
+name: Build and Publish image to Docker Hub
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
-  build:
+  publish_images:
     runs-on: ubuntu-latest
-
     steps:
-    # Code aus dem Repository auschecken
-    - uses: actions/checkout@v4
-
-    # Login in die GitHub Container Registry
-    - name: Log in to GitHub Container Registry
-      uses: docker/login-action@v2
-      with:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-
-    # Docker-Image bauen
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ghcr.io/kohlhaas1808/comfyui:latest
-
-    # Docker-Image pushen
-    - name: Push the Docker image
-      run: docker push ghcr.io/kohlhaas1808/comfyui:latest
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: build image
+        run: |
+          docker build . --file Dockerfile -t kohlhaas1808/comfyui:latest
+      - name: push image to docker hub
+        run: |
+          docker login -u kohlhaas1808 -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push kohlhaas1808/comfyui:latest
