@@ -64,21 +64,11 @@ RUN pip3 install jupyterlab
 EXPOSE 8888
 
 # Add some additional custom nodes
-# LDSR Upscale
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/flowtyone/ComfyUI-Flowty-LDSR.git && \
-    cd ComfyUI-Flowty-LDSR && \
-    pip3 install -r requirements.txt
 
 # Add download scripts for additional models
 COPY --chmod=755 download_Files.sh /download_Files.sh
 COPY --chmod=755 disable_mixlab.sh /disable_mixlab.sh
 
-# SUPIR Upscale
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/kijai/ComfyUI-SUPIR.git && \
-    cd ComfyUI-SUPIR && \
-    pip3 install -r requirements.txt
 
 # KJNodes
 RUN cd /ComfyUI/custom_nodes && \
@@ -96,42 +86,9 @@ RUN cd /ComfyUI/custom_nodes && \
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/JPS-GER/ComfyUI_JPS-Nodes.git
 
-# Comfyrol Studio
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git
-
 # comfy-plasma
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/Jordach/comfy-plasma.git
-
-# ComfyUI-VideoHelperSuite
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git && \
-    cd ComfyUI-VideoHelperSuite && \
-    pip3 install -r requirements.txt
-
-# ComfyUI-AdvancedLivePortrait
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait.git && \
-    cd ComfyUI-AdvancedLivePortrait && \
-    pip3 install -r requirements.txt
-
-# ComfyUI-Impact-Subpack
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git && \
-    cd ComfyUI-Impact-Pack && \
-    pip3 install -r requirements.txt && \
-    python3 install.py
-
-# ComfyUI-Impact-controlnet_aux
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git && \
-    cd comfyui_controlnet_aux && \
-    pip3 install -r requirements.txt
-
-# ComfyUI-UltimateSDUpscale
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/ssitu/ComfyUI_UltimateSDUpscale --recursive
 
 # ComfyUI-Easy-Use
 RUN cd /ComfyUI/custom_nodes && \
@@ -172,11 +129,6 @@ RUN cd /ComfyUI/custom_nodes && \
     cd ComfyUI_LayerStyle && \
     pip3 install -r requirements.txt
 
-# Ccomfyui-mixlab-nodes
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/shadowcz007/comfyui-mixlab-nodes.git && \
-    cd comfyui-mixlab-nodes && \
-    pip3 install -r requirements.txt
 
 # comfyui-reactor-node
 RUN cd /ComfyUI/custom_nodes && \
@@ -188,11 +140,6 @@ RUN cd /ComfyUI/custom_nodes && \
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/chrisgoringe/cg-use-everywhere.git
 
-# ComfyUI-CogVideoXWrapper
-RUN cd /ComfyUI/custom_nodes && \
-    git clone https://github.com/kijai/ComfyUI-CogVideoXWrapper.git && \
-    cd ComfyUI-CogVideoXWrapper && \
-    pip3 install -r requirements.txt
 
 
 CMD [ "/start.sh" ]

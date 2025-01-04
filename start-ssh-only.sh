@@ -27,13 +27,9 @@ else
 fi
 
 
-# Start nginx as reverse proxy to enable api access
-service nginx start
-
 # Start JupyterLab
 jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.allow_origin='*' &
 echo "JupyterLab started"
-
 
 
 # Check if user's script exists in /workspace
