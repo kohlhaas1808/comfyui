@@ -51,9 +51,7 @@ EXPOSE 8888
 # Add some additional custom nodes
 
 # Add download scripts for additional models
-COPY --chmod=755 download_Files.sh /download_Files.sh
-COPY --chmod=755 download_flux1devfp8.sh /download_flux1devfp8.sh
-COPY --chmod=755 download_flux1schnellfp8.sh /download_flux1schnellfp8.sh
+COPY --chmod=755 downloads.txt /downloads.txt
 COPY --chmod=755 styles.csv /styles.csv
 
 # KJNodes

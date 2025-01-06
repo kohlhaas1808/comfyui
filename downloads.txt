@@ -1,0 +1,28 @@
+#FP8 Models
+
+#Flux Schnell
+wget -O "/workspace/ComfyUI/models/checkpoints/flux1-schnell-fp8.safetensors" "https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors?download=true" --progress=bar:force:noscroll
+
+#Flux Dev
+wget -O "/workspace/ComfyUI/models/checkpoints/flux1-dev-fp8.safetensors" "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors?download=true" --progress=bar:force:noscroll
+
+#Control Net for Flex 6.6GB
+wget -O "/workspace/ComfyUI/models/controlnet/diffusion_pytorch_model.safetensors" "https://huggingface.co/Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro/resolve/main/diffusion_pytorch_model.safetensors?download=true" --progress=bar:force:noscroll
+
+
+
+#Flux Full
+wget -O "/workspace/ComfyUI/models/clip/clip_l.safetensors" "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors?download=true" --progress=bar:force:noscroll
+wget -O "/workspace/ComfyUI/models/clip/t5xxl_fp16.safetensors" "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors?download=true" --progress=bar:force:noscroll
+wget -O "/workspace/ComfyUI/models/vae/ae.sft" "https://huggingface.co/cocktailpeanut/xulf-dev/resolve/main/ae.sft?download=true" --progress=bar:force:noscroll
+wget -O "/workspace/ComfyUI/models/unet/flux1-dev.sft" "https://huggingface.co/cocktailpeanut/xulf-dev/resolve/main/flux1-dev.sft?download=true" --progress=bar:force:noscroll
+
+
+GGUF
+wget -O "/workspace/ComfyUI/models/unet/flux1-dev-Q8_0.gguf" "https://huggingface.co/city96/FLUX.1-dev-gguf/resolve/main/flux1-dev-Q8_0.gguf?download=true" --progress=bar:force:noscroll
+wget -O "/workspace/ComfyUI/models/clip/t5-v1_1-xxl-encoder-Q8_0.gguf" "https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/main/t5-v1_1-xxl-encoder-Q8_0.gguf?download=true" --progress=bar:force:noscroll
+
+wget -O "/workspace/ComfyUI/models/vae/ae.sft" "https://huggingface.co/cocktailpeanut/xulf-dev/resolve/main/ae.sft?download=true" --progress=bar:force:noscroll
+wget -O "/workspace/ComfyUI/models/clip/clip_l.safetensors" "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors?download=true" --progress=bar:force:noscroll
+
+
