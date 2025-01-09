@@ -44,6 +44,8 @@ EXPOSE 8188
 RUN wget "https://github.com/comfyanonymous/ComfyUI_examples/blob/master/flux/flux_dev_example.png" -P /ComfyUI
 
 
+RUN pip3 install huggingface_hub
+
 # Add Jupyter Notebook
 RUN pip3 install jupyterlab
 EXPOSE 8888
@@ -52,6 +54,7 @@ EXPOSE 8888
 
 # Add download scripts for additional models
 COPY --chmod=755 downloads.txt /downloads.txt
+COPY --chmod=755 download_gguf.py /download_gguf.py
 COPY --chmod=755 styles.csv /styles.csv
 
 # KJNodes
