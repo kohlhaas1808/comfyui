@@ -31,4 +31,30 @@ wget -O "/workspace/ComfyUI/models/clip/clip_l.safetensors" "https://huggingface
 # Guidance / (distilled) CFG between 1,6 and 2,2, Important to keep it low for realism!
 wget -O "/workspace/ComfyUI/models/loras/closeupface_v1.safetensors" "https://civitai.com/api/download/models/1143513?type=Model&format=SafeTensor?token=$CIVIT_TOKEN" --progress=bar:force:noscroll
 
-04fb679f75cf4fc107717dd03c4c4446
+
+wget -O "/workspace/ComfyUI/models/loras/amateur.safetensors" "https://civitai.com/api/download/models/993999?type=Model&format=SafeTensor&token=687f30365209a3d0a4ea1ec3e326e91a" --progress=bar:force:noscroll
+
+wget -O "/workspace/ComfyUI/models/loras/selfie.safetensors" "https://civitai.com/api/download/models/860811?type=Model&format=SafeTensor&token=687f30365209a3d0a4ea1ec3e326e91a" --progress=bar:force:noscroll
+wget -O "/workspace/ComfyUI/models/loras/aidmaImageUprader-FLUX-v0.3.safetensors" "https://civitai.com/api/download/models/984672?type=Model&format=SafeTensor&token=687f30365209a3d0a4ea1ec3e326e91a" --progress=bar:force:noscroll
+
+
+
+Flux Fill GGUF
+
+wget -O "/workspace/ComfyUI/models/unet/ flux1-fill-dev-Q8_0.gguf" "https://huggingface.co/YarvixPA/FLUX.1-Fill-dev-gguf/resolve/main/flux1-fill-dev-Q8_0.gguf?download=true" --progress=bar:force:noscroll
+
+
+# Video
+wget -O "/workspace/ComfyUI/models/checkpoints/ltx-video-2b-v0.9.safetensors" "https://huggingface.co/Lightricks/LTX-Video/resolve/main/ltx-video-2b-v0.9.safetensors?download=true" --progress=bar:force:noscroll
+wget -O "/workspace/ComfyUI/models/clip/t5xxl_fp16.safetensors" "https://huggingface.co/Comfy-Org/stable-diffusion-3.5-fp8/resolve/main/text_encoders/t5xxl_fp16.safetensors?download=true" --progress=bar:force:noscroll
+
+
+Video LTX GGUF
+
+wget -O "/workspace/ComfyUI/models/unet/ltx-video-2b-v0.9-Q8_0.gguf" "https://huggingface.co/city96/LTX-Video-gguf/resolve/main/ltx-video-2b-v0.9-Q8_0.gguf?download=true" --progress=bar:force:noscroll
+wget -O "/workspace/ComfyUI/models/clip/t5-v1_1-xxl-encoder-Q8_0.gguf" "https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/main/t5-v1_1-xxl-encoder-Q8_0.gguf?download=true" --progress=bar:force:noscroll
+
+
+
+wget -O "/workspace/ComfyUI/models/vae/LTX-Video-VAE-BF16.safetensors" "https://huggingface.co/city96/LTX-Video-gguf/resolve/main/LTX-Video-VAE-BF16.safetensors?download=true" --progress=bar:force:noscroll
+

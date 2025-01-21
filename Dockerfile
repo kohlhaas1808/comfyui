@@ -26,7 +26,7 @@ COPY --chmod=755 start-original.sh /start-original.sh
 COPY --chmod=755 comfyui-on-workspace.sh /comfyui-on-workspace.sh
 
 # Clone the git repo and install requirements in the same RUN command to ensure they are in the same layer
-RUN git clone https://github.com/comfyanonymous/ComfyUI.git && \
+RUN git clone --branch latest https://github.com/comfyanonymous/ComfyUI.git && \
     cd ComfyUI && \
     pip3 install -r requirements.txt && \
     cd custom_nodes && \
