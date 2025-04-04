@@ -49,12 +49,10 @@ wget -O "/workspace/ComfyUI/models/checkpoints/ltx-video-2b-v0.9.safetensors" "h
 wget -O "/workspace/ComfyUI/models/clip/t5xxl_fp16.safetensors" "https://huggingface.co/Comfy-Org/stable-diffusion-3.5-fp8/resolve/main/text_encoders/t5xxl_fp16.safetensors?download=true" --progress=bar:force:noscroll
 
 
-Video LTX GGUF
+#Video LTX GGUF
 
 wget -O "/workspace/ComfyUI/models/unet/ltx-video-2b-v0.9-Q8_0.gguf" "https://huggingface.co/city96/LTX-Video-gguf/resolve/main/ltx-video-2b-v0.9-Q8_0.gguf?download=true" --progress=bar:force:noscroll
 wget -O "/workspace/ComfyUI/models/clip/t5-v1_1-xxl-encoder-Q8_0.gguf" "https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/main/t5-v1_1-xxl-encoder-Q8_0.gguf?download=true" --progress=bar:force:noscroll
-
-
 
 wget -O "/workspace/ComfyUI/models/vae/LTX-Video-VAE-BF16.safetensors" "https://huggingface.co/city96/LTX-Video-gguf/resolve/main/LTX-Video-VAE-BF16.safetensors?download=true" --progress=bar:force:noscroll
 
