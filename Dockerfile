@@ -94,6 +94,23 @@ RUN cd /ComfyUI/custom_nodes && \
 RUN cd /ComfyUI/custom_nodes && \
     git clone https://github.com/chrisgoringe/cg-use-everywhere.git
 
+# ComfyUI-GGUF
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/city96/ComfyUI-GGUF.git
 
+
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/yolain/ComfyUI-Easy-Use.git
+
+
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/WASasquatch/was-node-suite-comfyui.git
+
+
+
+RUN cd /ComfyUI/custom_nodes && \
+    git clone https://github.com/gseth/ControlAltAI-Nodes.git
+	
+	
 
 CMD [ "/start.sh" ]
