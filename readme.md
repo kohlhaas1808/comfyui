@@ -10,7 +10,7 @@ Dieses Dockerfile erstellt ein Image, das ComfyUI (inklusive Manager) und Jupyte
 - **ComfyUI**: Open-Source-Bildgenerierungs-Framework.
 - **ComfyUI Manager**: Ermöglicht das einfache Verwalten von Modulen und Erweiterungen.
 - **JupyterLab**: Für Notebooks und interaktive Entwicklung.
-
+ 
 ## Verwendung
 ### Builden des Images
 ```bash
