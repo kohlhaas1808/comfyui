@@ -1,24 +1,15 @@
-#!/usr/bin/env bash
-set -Eeuo pipefail
+#!/bin/bash
 
-SRC="/ComfyUI"            # Container-Pfad
-DST="/workspace/ComfyUI"  # Persistenter Workspace (Netzpfad)
-
-# Workspace-Basis sichern
+# Ensure we have /workspace in all scenarios
 mkdir -p /workspace
 
-# Zielordner existiert? So lassen. Sonst LEER anlegen (kein Kopieren!).
-[[ -d "$DST" ]] || mkdir -p "$DST"
-
-# /ComfyUI freimachen (nur wenn kein Mountpoint), damit der Symlink gesetzt werden kann
-if [[ -e "$SRC" && ! -L "$SRC" ]]; then
-  if command -v mountpoint >/dev/null 2>&1 && mountpoint -q "$SRC"; then
-    printf '[WARN] %s ist ein Mountpoint – Symlink wird nicht gesetzt.\n' "$SRC"
-    exit 0
-  fi
-  rm -rf --one-file-system "$SRC"
+if [[ ! -d /workspace/ComfyUI ]]; then
+	# If we don't already have /workspace/ComfyUI, move it there
+	mv /ComfyUI /workspace
+else
+	# otherwise delete the default ComfyUI folder which is always re-created on pod start from the Docker
+	rm -rf /ComfyUI
 fi
 
-# Nur verlinken – keinerlei Datenübernahme
-ln -sfn "$DST" "$SRC"
-printf '[INFO] %s -> %s\n' "$SRC" "$DST"
+# Then link /ComfyUI folder to /workspace so it's available in that familiar location as well
+ln -s /workspace/ComfyUI /ComfyUI
