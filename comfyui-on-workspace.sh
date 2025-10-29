@@ -4,13 +4,13 @@
 mkdir -p /workspace
 
 SOURCE_DIR=/ComfyUI
-PERSIST_ROOT=/workspace/persist
+PERSIST_ROOT=/workspace
 TARGET_DIR=${PERSIST_ROOT}/ComfyUI
 
 mkdir -p "${TARGET_DIR}"
 
 # Persist only selected directories so code stays in the container image
-PERSIST_SUBDIRS=("models" "input" "output" "user")
+PERSIST_SUBDIRS=("models" "input" "output" "user" "custom_nodes")
 
 for subdir in "${PERSIST_SUBDIRS[@]}"; do
 	src_path="${SOURCE_DIR}/${subdir}"
