@@ -10,7 +10,7 @@ TARGET_DIR=${PERSIST_ROOT}/ComfyUI
 mkdir -p "${TARGET_DIR}"
 
 # Persist only selected directories so code stays in the container image
-PERSIST_SUBDIRS=("models" "input" "output" "custom_nodes" "user")
+PERSIST_SUBDIRS=("models" "input" "output" "user")
 
 for subdir in "${PERSIST_SUBDIRS[@]}"; do
 	src_path="${SOURCE_DIR}/${subdir}"
