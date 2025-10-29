@@ -44,7 +44,7 @@ EXPOSE 8188
 RUN wget "https://github.com/comfyanonymous/ComfyUI_examples/blob/master/flux/flux_dev_example.png" -P /ComfyUI
 
 
-RUN pip3 install huggingface_hub
+RUN pip3 install huggingface_hub gitpython
 
 # Add Jupyter Notebook
 RUN pip3 install jupyterlab
