@@ -4,45 +4,37 @@
 mkdir -p /workspace
 
 SOURCE_DIR=/ComfyUI
-TARGET_DIR=/workspace/ComfyUI
+PERSIST_ROOT=/workspace/persist
+TARGET_DIR=${PERSIST_ROOT}/ComfyUI
 
-# Seed the workspace copy if it is missing; otherwise refresh git metadata/custom nodes without touching models
-if [[ ! -d "${TARGET_DIR}" ]]; then
-	cp -a "${SOURCE_DIR}" /workspace/
-else
-	if [[ ! -d "${TARGET_DIR}/.git" ]]; then
-		cp -a "${SOURCE_DIR}/.git" "${TARGET_DIR}/"
+mkdir -p "${TARGET_DIR}"
+
+# Persist only selected directories so code stays in the container image
+PERSIST_SUBDIRS=("models" "input" "output" "custom_nodes" "user")
+
+for subdir in "${PERSIST_SUBDIRS[@]}"; do
+	src_path="${SOURCE_DIR}/${subdir}"
+	dst_path="${TARGET_DIR}/${subdir}"
+
+	if [[ -d "${src_path}" ]]; then
+		if [[ ! -e "${dst_path}" ]]; then
+			cp -a "${src_path}" "${dst_path}"
+		fi
+	else
+		mkdir -p "${dst_path}"
 	fi
 
-	# Ensure bundled custom nodes exist while keeping user changes and models intact
-	if [[ -d "${SOURCE_DIR}/custom_nodes" ]]; then
-		mkdir -p "${TARGET_DIR}/custom_nodes"
-		cp -an "${SOURCE_DIR}/custom_nodes/." "${TARGET_DIR}/custom_nodes/"
+	# Always ensure the destination exists before linking
+	mkdir -p "${dst_path}"
 
-		for src_repo in "${SOURCE_DIR}/custom_nodes"/*; do
-			[[ -d "${src_repo}" ]] || continue
-			repo_name=$(basename "${src_repo}")
-			dest_repo="${TARGET_DIR}/custom_nodes/${repo_name}"
+	rm -rf "${src_path}"
+	ln -s "${dst_path}" "${src_path}"
+done
 
-			if [[ -d "${src_repo}/.git" && ! -d "${dest_repo}/.git" ]]; then
-				cp -a "${src_repo}/.git" "${dest_repo}/"
-			fi
-		done
-	fi
-fi
-
-# Replace the image copy with a symlink that points at the persistent workspace
-rm -rf "${SOURCE_DIR}"
-ln -s "${TARGET_DIR}" "${SOURCE_DIR}"
-
-# Mark the workspace checkout and bundled repos as safe for git (prevents warnings when UID/GID differ on network storage)
-if command -v git >/dev/null 2>&1; then
-	git config --global --add safe.directory "${TARGET_DIR}" >/dev/null 2>&1 || true
-
-	if [[ -d "${TARGET_DIR}/custom_nodes" ]]; then
-		for repo_path in "${TARGET_DIR}/custom_nodes"/*; do
-			[[ -d "${repo_path}/.git" ]] || continue
-			git config --global --add safe.directory "${repo_path}" >/dev/null 2>&1 || true
-		done
-	fi
+# If git is available, mark persisted custom node repositories as safe
+if command -v git >/dev/null 2>&1 && [[ -d "${TARGET_DIR}/custom_nodes" ]]; then
+	for repo_path in "${TARGET_DIR}/custom_nodes"/*; do
+		[[ -d "${repo_path}/.git" ]] || continue
+		git config --global --add safe.directory "${repo_path}" >/dev/null 2>&1 || true
+	done
 fi
