@@ -32,13 +32,13 @@ jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.all
 echo "JupyterLab started"
 
 
-# Check if user's script exists in /workspace
-if [ ! -f /workspace/start_user.sh ]; then
-    # If not, copy the original script to /workspace
-    cp /start-original.sh /workspace/start_user.sh
-fi
+# # Check if user's script exists in /workspace
+# if [ ! -f /workspace/start_user.sh ]; then
+#     # If not, copy the original script to /workspace
+#     cp /start-original.sh /workspace/start_user.sh
+# fi
 
 # Execute the user's script
-bash /workspace/start_user.sh
+bash start-original.sh
 
 sleep infinity

@@ -8,7 +8,7 @@
 # But can be enabled if needed by commenting out the following line.
 
 # Launch the UI
-python3 /workspace/ComfyUI/main.py --listen
+python3 /ComfyUI/main.py --listen
 
 # Keep the container running indefinitely
 sleep infinity
