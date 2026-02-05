@@ -55,6 +55,7 @@ EXPOSE 8888
 # Add download scripts for additional models
 COPY --chmod=755 downloads.txt /downloads.txt
 COPY --chmod=755 download_gguf.py /download_gguf.py
+COPY --chmod=755 download_gguf_minimal.py /download_gguf_minimal.py
 COPY --chmod=755 styles.csv /styles.csv
 
 # KJNodes
